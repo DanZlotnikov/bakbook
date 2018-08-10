@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Industry</th>
+      <th scope="col">Title</th>
+      <th scope="col">Email</th>
+      <th scope="col">Offers</th>
+    </tr>
+
+    <% @auctions.each do |auction| %>
+      <tr onclick="location.href='<%= auction_path(auction) %>'">
+        <td><%= auction.id %></td>
+        <td><%= auction.industry %></td>
+        <td><%= auction.title %></td>
+        <td><%= auction.buyer %></td>
+        <td><%= auction.offers.count %></td>
+      </tr>
+    <% end %>
+    </table>
+  <br/>
+</div>

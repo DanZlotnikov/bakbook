@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="auction-box">
+        <div class="media-body">
+
+          <h3><strong><%= @auction.title %></strong></h3>
+
+          <br/>
+
+          <strong>Description:</strong>
+          <%= @auction.description %>
+          <br/>
+
+          <strong>Email:</strong>
+
+          <%= @user_email %>
+        </div>
+      </div>
+      <%= render @auction.offers %>
+    </div>
+    <div class="col">
+      <%= render 'offers/form' %>
+    </div>
+  </div>
+</div>
+

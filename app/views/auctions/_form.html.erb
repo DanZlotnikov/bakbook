@@ -1,0 +1,44 @@
+
+<body>
+<% if @auction.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@auction.errors.count, "error") %> prohibited
+      this auction from being saved:
+    </h2>
+    <ul>
+      <% @auction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="login-form">
+  <%= form_with model: @auction, local: true do |form| %>
+    <h2 class="text-center">Publish Auction</h2> <br>
+    <div class="form-group">
+
+      <%= form.text_field :title, :class => "form-control", :placeholder => "Title" %>
+    </div>
+    <div class="form-group">
+      <%= form.text_area :description, :class => "form-control", :placeholder => "Description" %>
+    </div>
+    <br>
+
+    <% unless session['is_logged'] %>
+      <div class="form-group">
+        <%= form.text_field :buyer, :class => "form-control", :placeholder => "Email" %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.text_field :industry, :class => "form-control", :placeholder => "Industry" %>
+    </div>
+  <br>
+
+    <div class="form-group">
+      <%= form.submit "Publish!", :class => "btn btn-warning btn-block" %>
+    </div>
+  <% end %>
+</div>
+</body>

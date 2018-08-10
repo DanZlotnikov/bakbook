@@ -1,0 +1,44 @@
+<body>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %> prohibited
+      this user from being saved:
+    </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="login-form">
+  <%= form_with model: @user, local: true do |form| %>
+    <h2 class="text-center">New User</h2>
+    <div class="form-group">
+
+      <%= form.text_field :name, :class => "form-control", :placeholder => "Name" %>
+    </div>
+    <div class="form-group">
+      <%= form.text_field :email, :class => "form-control", :placeholder => "Email" %>
+    </div>
+<br>
+    <div class="form-group">
+      <%= form.text_field :password, :class => "form-control", :placeholder => "Password" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.text_field :repeat_password, :class => "form-control", :placeholder => "Repeat Password" %>
+    </div>
+<br>
+    <div class="form-group">
+      <%= form.text_field :industry, :class => "form-control", :placeholder => "Industry" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Join Us!", :class => "btn btn-success btn-block" %>
+    </div>
+  <% end %>
+  <p class="text-center">Existing user? <%= link_to "Log In!", login_path %></p>
+</div>
+</body>

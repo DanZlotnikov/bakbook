@@ -1,0 +1,20 @@
+<div class="offer-box">
+
+  <strong> Bidder:</strong>
+  <%= offer.bidder_email %><br/>
+
+  <strong>Offer:</strong>
+  <%= offer.body %>
+
+  <div class="media-body">
+    <% unless @user.nil? %>
+      <% if session[:logged_user_id] == @user.id %>
+        <%= link_to 'Delete', [offer.auction, offer],
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'},
+                    :class => "btn btn-danger offer-delete-button" %>
+      <% end %>
+    <% end %>
+  </div>
+  </ul>
+</div>
