@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         session[:logged_user_email] = user.email
         session[:is_logged] = true
         session[:logged_user_id] = user.id
-        redirect_to auctions_path
+        redirect_back fallback_location: welcome_index_path
       else
         raise
       end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_back fallback_location: auctions_path
+    redirect_to welcome_index_path
   end
 
   private

@@ -15,3 +15,8 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+function openModal() {
+    $(function() {
+        $('#loginButton').click();
+    });
+}

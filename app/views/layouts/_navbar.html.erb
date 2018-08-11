@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg flex-row navbar-light">
 
-  <a class="navbar-brand" href="#"><%= image_tag("logo.png", :style => "width:80px;height:40px;") %></a>
+  <%= link_to root_path, :class=>"navbar-brand" do %>
+    <%= image_tag("logo.png", :style => "width:80px;height:40px;") %>
+  <% end %>
+<a  href=></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,20 +12,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <button class="btn btn-warning"><%= link_to 'New Auction', new_auction_path %></button>
+        <%= link_to 'New Auction', new_auction_path, method: :get, :class=>"btn btn-warning" %>
       </li>
 
       <li class="nav-item">
-        <button class="btn btn-dark"><%= link_to 'All Auctions', controller: 'auctions' %></button>
+        <%= link_to 'All Auctions', auctions_path, :class => "btn btn-dark" %>
       </li>
 
     </ul>
     <% unless session[:is_logged] %>
-      <button class="btn btn-outline-success my-2 my-sm-0"><%= link_to 'Create User!', new_user_path %></button>
-      <button class="btn btn-outline-primary my-2 my-sm-0"><%= link_to 'Login', login_path %></button>
+      <%= link_to 'Create User!', new_user_path, :class => "btn btn-outline-success my-2 my-sm-0"  %>
+      <button id="loginButton" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Login</button>
+
 
     <% else %>
-      <button class="btn btn-outline-secondary my-2 my-sm-0"><%= link_to 'Settings', user_path(session[:logged_user_id]) %></button>
+      <%= link_to 'Settings', user_path(session[:logged_user_id]), :class=>"btn btn-outline-secondary my-2 my-sm-0" %>
       <button class="btn btn-outline-danger my-2 my-sm-0"><%= link_to 'Logout', logout_path,
                                                                       method: :delete,
                                                                       data: {confirm: 'Are you sure?'} %></button>
@@ -30,3 +34,5 @@
     <% end %>
   </div>
 </nav>
+<%= render 'layouts/login_modal.html.erb'%>
+
