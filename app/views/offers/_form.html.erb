@@ -1,6 +1,8 @@
 <div class="new-offer-box">
 
   <div class="form-group">
+    <h3> New Offer: </h3>
+    <br>
 
     <%= form_with(model: [@auction, @auction.offers.new], local: true) do |form| %>
 
@@ -9,11 +11,14 @@
 
       <%= form.text_area :body, :class => "form-control", :placeholder => "Description" %> <br>
       <% if session[:is_logged] %>
-        <%= form.submit :class => "btn btn-success btn-lg btn-block btn-create-offer" %>
-      <% else %>
-        <%= link_to 'Login', login_path, :class => "login-offer-button" %> to make an offer!
-
+        <%= form.submit :class => "btn btn-success btn-lg btn-create-offer" %>
       <% end %>
+
+
+    <% end %>
+    <% unless session[:is_logged] %>
+      <button onclick="openLoginModal()" class="btn btn-primary"> Login to make an offer!</button>
     <% end %>
   </div>
+
 </div>

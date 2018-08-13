@@ -23,6 +23,7 @@ class AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(auction_params.merge(:user_id => session[:logged_user_id]))
+    @auction.auction_document.attach(auction_params[:auction_document])
 
     if @auction.save
       redirect_to @auction
@@ -51,6 +52,6 @@ class AuctionsController < ApplicationController
   private
 
   def auction_params
-    params.require(:auction).permit(:title, :description, :buyer, :industry)
+    params.require(:auction).permit(:title, :description, :buyer, :industry, :auction_document)
   end
 end

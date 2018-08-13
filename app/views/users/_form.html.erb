@@ -12,17 +12,15 @@
     </ul>
   </div>
 <% end %>
-<div class="login-form">
+<div class="create-user-form">
   <%= form_with model: @user, local: true do |form| %>
-    <h2 class="text-center">New User</h2>
     <div class="form-group">
-
+      <label> Credentials: </label>
       <%= form.text_field :name, :class => "form-control", :placeholder => "Name" %>
     </div>
     <div class="form-group">
       <%= form.text_field :email, :class => "form-control", :placeholder => "Email" %>
     </div>
-<br>
     <div class="form-group">
       <%= form.text_field :password, :class => "form-control", :placeholder => "Password" %>
     </div>
@@ -30,10 +28,13 @@
     <div class="form-group">
       <%= form.text_field :repeat_password, :class => "form-control", :placeholder => "Repeat Password" %>
     </div>
-<br>
+    <br>
+
+    <label> Business Info: </label>
     <div class="form-group">
       <%= form.text_field :industry, :class => "form-control", :placeholder => "Industry" %>
     </div>
+    <br>
 
     <div class="form-group">
       <%= form.submit "Join Us!", :class => "btn btn-success btn-block" %>

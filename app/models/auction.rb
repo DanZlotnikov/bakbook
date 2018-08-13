@@ -1,6 +1,7 @@
 class Auction < ApplicationRecord
   has_many :offers, dependent: :destroy
   validates :title, presence: true
+  has_one_attached :auction_document
 
   before_save :get_buyer
 

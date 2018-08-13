@@ -8,9 +8,9 @@
             <div class="card-desc">
               <h3>Existing User</h3>
               <br>
-              <p>Login to use the full set of professional solutions</p>
-              <button class="btn btn-warning my-2 my-sm-0"><%= link_to 'New Auction', new_auction_path, method: :get %></button>
-              <button class="btn btn-light my-2 my-sm-0"><%= link_to 'Browse', auctions_path %></button>
+              <p>Use the full set of professional solutions for industry buy/sell</p>
+              <%= link_to 'New Auction', new_auction_path, method: :get, :class => "btn btn-warning my-2 my-sm-0" %>
+              <%= link_to 'Browse', auctions_path, :class => "btn btn-light my-2 my-sm-0" %>
             </div>
           </center>
         </div>
@@ -22,8 +22,8 @@
               <h3> Visitor </h3>
               <br>
               <p>Join now to propel your business forward!</p>
-              <button class="btn btn-success my-2 my-sm-0"><%= link_to 'Create User', auctions_path %></button>
-              <button class="btn btn-warning my-2 my-sm-0"><%= link_to 'New Auction', new_auction_path %></button>
+              <%= link_to 'Create User', new_user_path, :class => "btn btn-success my-2 my-sm-0" %>
+              <%= link_to 'New Auction', new_auction_path, :class => "btn btn-warning my-2 my-sm-0" %>
             </div>
           </center>
         </div>

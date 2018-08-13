@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>New Auction</title>
 </head>
-<body <% unless session[:is_logged] %> onload="openModal()" <% end %> >
+<body <% unless session[:is_logged] %> onload="openLoginModal()"<% end %> >
 
 <%= render 'form' %>
-<%= link_to 'Back', auctions_path %>
 
 </body>
 </html>
