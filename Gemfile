@@ -61,3 +61,5 @@ gem 'bootstrap-sass'
 gem 'materialize-sass'
 
 gem 'responders', '~> 2.0'
+
+gem 'carrierwave', '~> 1.0'

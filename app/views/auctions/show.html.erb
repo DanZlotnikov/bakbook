@@ -5,16 +5,29 @@
         <div class="media-body">
 
           <h3><strong><%= @auction.title %></strong></h3>
-
           <br/>
 
+          <% unless @auction.industry.nil? %>
+            <strong>Industry:</strong>
+            <%= @auction.industry %>
+            <br/>
+          <% end %>
           <strong>Description:</strong>
           <%= @auction.description %>
           <br/>
 
           <strong>Email:</strong>
-
           <%= @user_email %>
+          <br/><br/>
+
+          <% begin
+               @auction.auction_document.nil?  %>
+            <%= link_to @auction.auction_document.filename, @auction.auction_document, :class => "btn btn-outline-info" %>
+            <br/>
+          <% rescue %>
+            <div style="color:red"><strong>No file attached.</strong></div>
+            <br>
+          <% end %>
         </div>
       </div>
       <%= render @auction.offers %>
@@ -24,4 +37,3 @@
     </div>
   </div>
 </div>
-

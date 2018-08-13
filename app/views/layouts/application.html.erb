@@ -14,15 +14,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
+<body background="background.jpg">
 
-<%= render 'layouts/navbar.html.erb'%>
-<body>
-
-<div class="container">
+<%= render 'layouts/navbar.html.erb' %>
+<div class="container no-margin">
   <%= yield %>
 </div>
-
-
 
 </body>
 </html>

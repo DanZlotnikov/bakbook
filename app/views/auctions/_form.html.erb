@@ -17,13 +17,9 @@
     <h2>Publish Auction</h2>
   </div>
   <%= form_with model: @auction, local: true do |form| %>
-    <% unless session['is_logged'] %>
-      <div class="form-group">
-        <%= form.text_field :buyer, :class => "form-control auction-form-element", :placeholder => "Email" %>
-      </div>
-    <% end %>
 
-    <label> General: </label>
+
+    <label> Auction Info: </label>
     <div class="form-group">
       <%= form.text_field :title, :class => "form-control auction-form-element", :placeholder => "Title" %>
     </div>
@@ -32,22 +28,33 @@
     </div>
     <br>
 
-    <label> Business Info: </label>
-
-    <div class="form-group">
-      <%= form.text_field :industry, :class => "form-control auction-form-element", :placeholder => "Industry" %>
-    </div>
-
-
-    <label> Auction Document: </label>
-    <div class="form-group">
+    <div class="form-group auction-document">
+      <label> <strong>Auction Document:</strong> </label>
       <%= form.file_field :auction_document %>
     </div>
     <br>
 
-    <div class="form-group">
-      <%= form.submit "Publish!", :class => "btn btn-warning btn-block auction-form-element" %>
-    </div>
+    <% unless session[:is_logged] %>
+      <label> Business Info: </label>
+      <div class="form-group">
+        <%= select_tag :industry, options_for_select(Auction::INDUSTRY_OPTIONS), :class => "form-control auction-form-element", :selected => "Industry", :name => "auction[industry]", :id => "auction_industry" %>
+      </div>
+
+      <br>
+    <% end %>
+
+    <% unless session['is_logged'] %>
+      <div class="form-group">
+        <%= form.text_field :buyer, :class => "form-control auction-form-element", :placeholder => "Email" %>
+      </div>
+    <% end %>
+    <center>
+      <div class="form-group unsized-btn">
+        <br>
+        <%= form.submit "Publish!", :class => "btn btn-warning btn-block auction-form-element" %>
+      </div>
+    </center>
   <% end %>
 </div>
 </body>
+

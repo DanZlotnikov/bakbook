@@ -86,6 +86,7 @@ tr:hover {
 .btn-create-offer {
   position: relative;
   top: 10px;
+  margin-bottom: 15px;
 }
 
 .login-offer-button {
@@ -93,7 +94,7 @@ tr:hover {
 }
 
 .login-form {
-  width: 340px;
+  width: 700px;
   margin: 50px auto;
 }
 
@@ -107,7 +108,9 @@ tr:hover {
 }
 
 .login-form form {
+  width: 700px;
   margin-bottom: 15px;
+  margin-right: 300px;
   background: #f7f7f7;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   padding: 30px;
@@ -330,6 +333,46 @@ tr:hover {
   border-radius: 5px;
 }
 
+.create-user-header > h2 {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-color: #28a745;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
 .auction-form-element {
   border-radius: 4px;
+}
+
+.auction-document {
+  padding: 20px;
+  border: 1px solid;
+  border-color: goldenrod;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.unsized-btn {
+  width: 300px;
+}
+
+body {
+  background-image: url("background.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

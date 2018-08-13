@@ -43,3 +43,4 @@ function openCreateUserModal() {
         $('#createUserButton').click();
     });
 }
+
