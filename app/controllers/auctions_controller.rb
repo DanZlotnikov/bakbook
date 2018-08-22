@@ -1,8 +1,12 @@
 class AuctionsController < ApplicationController
-
+  helper_method :sort_column, :sort_direction, :sort_industry
 
   def index
-    @auctions = Auction.all
+    unless sort_industry == 0
+      @auctions = Auction.where(:industry => sort_industry).order(sort_column + " " + sort_direction)
+    else
+      @auctions = Auction.order(sort_column + " " + sort_direction)
+    end
   end
 
   def show
@@ -55,5 +59,19 @@ class AuctionsController < ApplicationController
 
   def auction_params
     params.require(:auction).permit(:title, :description, :buyer, :industry, :auction_document)
+  end
+
+  def sort_column
+    # This is a big fancy if to only allow column names
+    Auction.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+
+  def sort_direction
+    # This is a big fancy if to only allow asc/desc
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def sort_industry
+    Auction::INDUSTRY_OPTIONS.include?(params[:industry]) ? params[:industry] : 0
   end
 end

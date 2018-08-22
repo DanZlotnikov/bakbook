@@ -1,20 +1,42 @@
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Industry</th>
-    <th scope="col">Title</th>
-    <th scope="col">Email</th>
-    <th scope="col">Offers</th>
-  </tr>
-  <% @auctions.each do |auction| %>
-    <tr onclick="location.href='<%= auction_path(auction) %>'">
-      <td><%= auction.id %></td>
-      <td><%= auction.industry %></td>
-      <td><%= auction.title %></td>
-      <td><%= auction.buyer %></td>
-      <td><%= auction.offers.count %></td>
-    </tr>
-  <% end %>
-  </table>
-<br/>
+<div class="row">
+
+  <div class="col-sm-3 ">
+    <div class="list-group">
+      <br>
+      <a href="#" class="list-group-item dark list-group-item-action group-header">
+        Choose Industry
+      </a>
+      <% for option in Auction::INDUSTRY_OPTIONS do %>
+        <% unless option == "Choose Industry" %>
+          <%= link_to option, {:industry => option.to_s}, :class => "list-group-item list-group-item-action" %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+  <div class="col-sm-9">
+    <br>
+    <table class="table table-white">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col"><%= sortable "Industry", "industry" %></th>
+        <th scope="col"><%= sortable "Title", "title" %></th>
+        <th scope="col"><%= sortable "Email", "buyer" %></th>
+        <th scope="col">Offers</th>
+        <th scope="col"><%= sortable "Date", "created_at" %></th>
+      </tr>
+      <% @auctions.each do |auction| %>
+        <tr onclick="location.href='<%= auction_path(auction) %>'">
+          <td><%= auction.industry %></td>
+          <td><%= auction.title %></td>
+          <td><%= auction.buyer %></td>
+          <td><%= auction.offers.count %></td>
+          <td><%= auction.created_at.to_formatted_s(:short) %></td>
+        </tr>
+      <% end %>
+      </table>
+    <br/>
+  </div>
+</div>
