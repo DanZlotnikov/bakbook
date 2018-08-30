@@ -1,39 +1,69 @@
 <div class="container">
   <div class="row">
+
     <div class="col">
+
+      <div class="auction-header">
+        <h2><%= @auction.title %></h2>
+      </div>
+
       <div class="auction-box">
         <div class="media-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <% unless @auction.industry.nil? %>
+                <strong>Industry:</strong>
+                <%= @auction.industry %>
+                <br/>
+              <% end %>
+              <strong>Description:</strong>
+              <%= @auction.description %>
+              <br>
+              <br>
+              <% begin
+                   @auction.auction_document.nil?    %>
+                <%= link_to @auction.auction_document.filename, @auction.auction_document, :class => "btn btn-outline-info" %>
+                <br/>
+              <% rescue %>
+                <div style="color:red"><strong>No file attached.</strong></div>
+                <br>
+              <% end %>
 
-          <h3><strong><%= @auction.title %></strong></h3>
-          <br/>
-
-          <% unless @auction.industry.nil? %>
-            <strong>Industry:</strong>
-            <%= @auction.industry %>
-            <br/>
-          <% end %>
-          <strong>Description:</strong>
-          <%= @auction.description %>
-          <br/>
-
-          <strong>Email:</strong>
-          <%= @user_email %>
-          <br/><br/>
-
-          <% begin
-               @auction.auction_document.nil?  %>
-            <%= link_to @auction.auction_document.filename, @auction.auction_document, :class => "btn btn-outline-info" %>
-            <br/>
-          <% rescue %>
-            <div style="color:red"><strong>No file attached.</strong></div>
-            <br>
-          <% end %>
+            </div>
+            <div class="col-sm-4">
+              <strong>Offers:</strong>
+              <%= @auction.offers.count %>
+              <br/><br/>
+            </div>
+            <div class="col-sm-4">
+              <strong>Email:</strong>
+              <%= @user_email %>
+              <br/><br/>
+            </div>
+          </div>
         </div>
       </div>
-      <%= render @auction.offers %>
+      <br>
+
+
+      <% if @auction.offers.count > 0 %>
+        <div class="offers-header">
+          <h2>Offers</h2>
+        </div>
+        <%= render @auction.offers %>
+      <% else %>
+        <div class="no-offers-header">
+          <h2> No offers found. </h2>
+        </div>
+      <% end %>
     </div>
-    <div class="col">
-      <%= render 'offers/form' %>
-    </div>
+
+
+    <% unless session[:logged_user_email] == @auction.buyer %>
+
+      <div class="col-sm-5">
+        <%= render 'offers/form' %>
+      </div>
+    <% end %>
   </div>
 </div>

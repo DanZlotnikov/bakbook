@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       if login_params[:password] == user.password
         session[:logged_user_name] = user.name
         session[:logged_user_email] = user.email
+        session[:logged_user_industry] = user.industry
         session[:is_logged] = true
         session[:logged_user_id] = user.id
         redirect_back fallback_location: welcome_index_path

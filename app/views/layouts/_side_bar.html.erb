@@ -1,0 +1,18 @@
+<div class="sidebar-div">
+  <div class="sidebar-header">
+    <h4>Manage</h4>
+  </div>
+  <ul class="nav flex-column sidebar">
+    <%= link_to "My Auctions", auctions_path(:user_id => session[:logged_user_id]), :class => "nav-item sidebar-item btn btn-outline-light" %>
+
+    <%= link_to "My Offers", user_offers_path(session[:logged_user_id]), :class => "nav-item sidebar-item btn btn-outline-light" %>
+
+    <%= link_to "My Industry", auctions_path(:industry => session[:logged_user_industry]), :class => "nav-item sidebar-item btn btn-outline-light" %>
+
+    <%= link_to "Private Requests", auctions_path({:is_private => true, :user_id => session[:logged_user_id]}), :class => "nav-item sidebar-item btn btn-outline-light" %>
+
+    <%= link_to "Statistics", auctions_path, :class => "nav-item sidebar-item btn btn-outline-light" %>
+
+    <%= link_to "Settings", auctions_path, :class => "nav-item sidebar-item btn btn-outline-light" %>
+  </ul>
+</div>

@@ -1,0 +1,17 @@
+<% unless @offers.nil? %>
+  <table class="table table-white">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"> Auction Title</th>
+      <th scope="col"> Date</th>
+    </tr>
+    <% @offers.each do |offer| %>
+      <% unless offer.auction.nil? %>
+        <tr onclick="location.href='<%= auction_path(offer.auction_id) %>'">
+          <td><%= offer.auction.title %></td>
+          <td><%= offer.created_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </table>
+<% end %>

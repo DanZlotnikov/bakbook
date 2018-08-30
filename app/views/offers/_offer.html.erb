@@ -1,20 +1,31 @@
-<div class="offer-box">
+<% if offer.auction.user_id == session[:logged_user_id] || offer.user_id == session[:logged_user_id] %>
+  <div class="offer-box">
 
-  <strong> Bidder:</strong>
-  <%= offer.bidder_email %><br/>
+    <strong> Bidder:</strong>
+    <%= User.find(offer.user_id).email %><br/>
+    <br>
 
-  <strong>Offer:</strong>
-  <%= offer.body %>
-
-  <div class="media-body">
-    <% unless @user.nil? %>
-      <% if session[:logged_user_id] == @user.id %>
-        <%= link_to 'Delete', [offer.auction, offer],
-                    method: :delete,
-                    data: {confirm: 'Are you sure?'},
-                    :class => "btn btn-danger offer-delete-button" %>
-      <% end %>
+    <% begin
+         offer.offer_document.nil?   %>
+      <%= link_to offer.offer_document.filename, offer.offer_document, :class => "btn btn-outline-info" %>
+      <br/>
+    <% rescue %>
+      <div style="color:red"><strong>No file attached.</strong></div>
+      <br>
     <% end %>
+
+    <div class="media-body">
+      <% unless @user.nil? %>
+        <% if session[:logged_user_id] == @user.id %>
+          <div>
+            <%= link_to 'Delete', [offer.auction, offer],
+                        method: :delete,
+                        data: {confirm: 'Are you sure?'},
+                        :class => "btn btn-danger offer-delete-button" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    </ul>
   </div>
-  </ul>
-</div>
+<% end %>

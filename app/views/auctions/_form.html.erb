@@ -1,4 +1,3 @@
-<body>
 <% if @auction.errors.any? %>
   <div id="error_explanation">
     <h2>
@@ -33,9 +32,9 @@
       <%= form.file_field :auction_document %>
     </div>
     <br>
-
+    <label> Business Info: </label>
     <% unless session[:is_logged] %>
-      <label> Business Info: </label>
+
       <div class="form-group">
         <%= select_tag :industry, options_for_select(Auction::INDUSTRY_OPTIONS), :class => "form-control auction-form-element", :selected => "Industry", :name => "auction[industry]", :id => "auction_industry" %>
       </div>
@@ -43,18 +42,47 @@
       <br>
     <% end %>
 
+
+
     <% unless session['is_logged'] %>
       <div class="form-group">
-        <%= form.text_field :buyer, :class => "form-control auction-form-element", :placeholder => "Email" %>
+        <%= form.text_field :buyer, :class => "form-control auction-form-element", :placeholder => "Your Email" %>
       </div>
     <% end %>
-    <center>
-      <div class="form-group unsized-btn">
-        <br>
-        <%= form.submit "Publish!", :class => "btn btn-warning btn-block auction-form-element" %>
-      </div>
-    </center>
+
+    <br><br>
+
+    <div class="form-group">
+
+      <input type="checkbox" class="form control private-checkbox" id="privateSupplier" onclick="showPrivateSupplier()">&nbsp
+      Private Auction
+      <br>
+      <br>
+      <%= form.text_field :supplier, :id => "supplier", :class => "form-control auction-form-element", :style => "display:none;", :placeholder => "Supplier Email" %>
+    </div>
+
+
+    <div class="form-group unsized-btn">
+      <br>
+      <%= form.submit "Publish!", :class => "btn btn-warning btn-block btn-form auction-form-element" %>
+    </div>
   <% end %>
 </div>
-</body>
 
+
+<script type="text/javascript">
+    function showPrivateSupplier() {
+// Get the checkbox
+        var isPrivate = document.getElementById("privateSupplier");
+// Get the output text
+        var supplier = document.getElementById("supplier");
+
+// If the checkbox is checked, display the output text
+        if (isPrivate.checked) {
+            supplier.style.display = "block";
+        } else {
+            supplier.style.display = "none";
+        }
+    }
+
+</script>

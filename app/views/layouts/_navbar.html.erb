@@ -1,6 +1,6 @@
 <div class="behind-nav-blur">
 
-  <nav class="navbar navbar-expand-lg flex-row navbar-light navbar-fixed">
+  <nav class="navbar navbar-expand-lg flex-row navbar-fixed">
 
     <%= link_to root_path, :class => "navbar-brand" do %>
       <%= image_tag("logo.png", :style => "width:80px;height:40px;") %>
@@ -18,17 +18,17 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to 'All Auctions', auctions_path, :class => "btn btn-dark" %>
+          <%= link_to 'All Auctions', auctions_path, :class => "btn btn-light" %>
         </li>
 
       </ul>
       <% unless session[:is_logged] %>
-        <%= link_to 'Create User', new_user_path, :class => "btn btn-outline-success my-2 my-sm-0" %>
+        <%= link_to 'Create User', new_user_path, :class => "btn btn-outline-light my-2 my-sm-0" %>
         <button id="loginButton" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#loginModal">Login</button>
 
 
       <% else %>
-        <%= link_to 'Settings', user_path(session[:logged_user_id]), :class => "btn btn-outline-secondary my-2 my-sm-0" %>
+        <%= link_to 'Settings', user_path(session[:logged_user_id]), :class => "btn btn-outline-light my-2 my-sm-0" %>
         <button class="btn btn-outline-danger my-2 my-sm-0"><%= link_to 'Logout', logout_path,
                                                                         method: :delete,
                                                                         data: {confirm: 'Are you sure?'} %></button>

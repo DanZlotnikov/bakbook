@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :offers
   end
 
-  get 'my_auctions', to: 'auctions#my'
+  get '/my_offers', to: 'offers#my'
 
   resources :users do
     resources :auctions

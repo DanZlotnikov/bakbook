@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_121632) do
+ActiveRecord::Schema.define(version: 2018_08_29_161159) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 2018_08_13_121632) do
     t.string "title"
     t.text "description"
     t.string "buyer"
-    t.string "provider"
+    t.string "supplier"
     t.string "industry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "document"
+    t.boolean "is_private"
     t.index ["user_id"], name: "index_auctions_on_user_id"
   end
 

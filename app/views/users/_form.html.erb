@@ -19,7 +19,7 @@
   </div>
   <%= form_with model: @user, local: true do |form| %>
     <div class="form-group">
-      <label> Credentials: </label>
+      <label> Credentials </label><br>
       <%= form.text_field :name, :class => "form-control", :placeholder => "Name" %>
     </div>
     <div class="form-group">
@@ -34,14 +34,14 @@
     </div>
     <br>
 
-    <label> Business Info: </label>
+    <label> Business Info </label><br>
     <div class="form-group">
-      <%= form.text_field :industry, :class => "form-control", :placeholder => "Industry" %>
+      <%= select_tag :industry, options_for_select(Auction::INDUSTRY_OPTIONS), :class => "form-control", :selected => "Choose Industry", :name => "user[industry]", :id => "user_industry" %>
     </div>
     <br>
     <center>
       <div class="form-group unsized-btn">
-        <%= form.submit "Join Us!", :class => "btn btn-success btn-block" %>
+        <%= form.submit "Join Us!", :class => "btn btn-success btn-block btn-form auction-form-element" %>
       </div>
     </center>
   <% end %>
