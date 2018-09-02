@@ -41,7 +41,7 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    is_private = auction_params[:supplier].nil? ? false : true
+    is_private = auction_params[:supplier].empty? || auction_params[:supplier].nil?  ? false : true
     @auction = Auction.new(auction_params.merge(:user_id => session[:logged_user_id]).merge(:is_private => is_private))
     @auction.auction_document.attach(auction_params[:auction_document])
 

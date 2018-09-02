@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 function openLoginModal() {
-    $(function() {
+    $(function () {
         $('#loginButton').click();
     });
 }
@@ -39,8 +39,17 @@ function openLoginModal() {
 //= require turbolinks
 //= require_tree .
 function openCreateUserModal() {
-    $(function() {
+    $(function () {
         $('#createUserButton').click();
     });
+}
+
+function alertMockAuction() {
+    setInterval(function () {
+        document.getElementById("mockAuctionAlert").setAttribute("style", "display: none");
+        setTimeout(function () {
+            document.getElementById("mockAuctionAlert").setAttribute("style", "display: none");
+        }, 4000);
+    }, 10000);
 }
 

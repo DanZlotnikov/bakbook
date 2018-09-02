@@ -6,7 +6,7 @@
     <br>
 
     <% begin
-         offer.offer_document.nil?   %>
+         offer.offer_document.nil?     %>
       <%= link_to offer.offer_document.filename, offer.offer_document, :class => "btn btn-outline-info" %>
       <br/>
     <% rescue %>
@@ -18,6 +18,12 @@
       <% unless @user.nil? %>
         <% if session[:logged_user_id] == @user.id %>
           <div>
+            <%= link_to "Confirm Offer",
+                        [offer.auction, offer],
+                        method: :put,
+                        :class => "btn btn-success offer-confirm-button" %>
+
+
             <%= link_to 'Delete', [offer.auction, offer],
                         method: :delete,
                         data: {confirm: 'Are you sure?'},

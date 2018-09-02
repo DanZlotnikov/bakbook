@@ -17,6 +17,17 @@ class OffersController < ApplicationController
     end
   end
 
+  def update
+    @offer = Offer.find(params[:id])
+    @offer.update_attribute(:chosen, true)
+
+    @auction = Auction.find(params[:auction_id])
+    @user = User.find(@offer.user_id)
+
+    @offer.auction.update_attribute(:supplier, @user.email)
+    redirect_to auction_path(@offer.auction)
+  end
+
   def destroy
     @auction = Auction.find(params[:auction_id])
     @offer = @auction.offers.find(params[:id])

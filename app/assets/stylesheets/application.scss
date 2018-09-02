@@ -421,13 +421,6 @@ body {
   background-color: lightgray;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .table-white {
@@ -636,4 +629,15 @@ footer p {
 
 .private-checkbox {
 
+}
+
+.mock-auction-alert {
+  position:fixed;
+  top:80%;
+  right:0%;
+  background-color: aliceblue;
+  width:25%;
+  height:25%;
+  border: 1px solid;
+  border-radius: 5px;
 }
